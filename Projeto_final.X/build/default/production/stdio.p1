@@ -1,0 +1,109 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"23 ./lcd.h
+[; ;./lcd.h: 23:  void lcdCommand(unsigned char cmd);
+[v _lcdCommand `(v ~T0 @X0 0 ef1`uc ]
+"24
+[; ;./lcd.h: 24:  void lcdData(unsigned char valor);
+[v _lcdData `(v ~T0 @X0 0 ef1`uc ]
+"4 stdio.c
+[; ;stdio.c: 4: void printf(char msg[60]){
+[v _printf `(v ~T0 @X0 1 ef1`*uc ]
+{
+[e :U _printf ]
+[v _msg `*uc ~T0 @X0 1 r1 ]
+[f ]
+"5
+[; ;stdio.c: 5:     int i, linha = 1;
+[v _i `i ~T0 @X0 1 a ]
+[v _linha `i ~T0 @X0 1 a ]
+[e = _linha -> 1 `i ]
+"6
+[; ;stdio.c: 6:     lcdCommand(0x80);
+[e ( _lcdCommand (1 -> -> 128 `i `uc ]
+"7
+[; ;stdio.c: 7:     for(i = 0;i < 60;i++) {
+{
+[e = _i -> 0 `i ]
+[e $ < _i -> 60 `i 2  ]
+[e $U 3  ]
+[e :U 2 ]
+{
+"8
+[; ;stdio.c: 8:         if(msg[i] == '\n'){
+[e $ ! == -> *U + _msg * -> _i `x -> -> # *U _msg `i `x `ui -> 10 `ui 5  ]
+{
+"9
+[; ;stdio.c: 9:             i++;
+[e ++ _i -> 1 `i ]
+"10
+[; ;stdio.c: 10:              if(linha == 1){
+[e $ ! == _linha -> 1 `i 6  ]
+{
+"11
+[; ;stdio.c: 11:                 lcdCommand(0xC0);
+[e ( _lcdCommand (1 -> -> 192 `i `uc ]
+"12
+[; ;stdio.c: 12:                 linha++;
+[e ++ _linha -> 1 `i ]
+"13
+[; ;stdio.c: 13:              }else if(linha == 2){
+}
+[e $U 7  ]
+[e :U 6 ]
+[e $ ! == _linha -> 2 `i 8  ]
+{
+"14
+[; ;stdio.c: 14:                  lcdCommand(0x90);
+[e ( _lcdCommand (1 -> -> 144 `i `uc ]
+"15
+[; ;stdio.c: 15:                  linha++;
+[e ++ _linha -> 1 `i ]
+"16
+[; ;stdio.c: 16:              }else if(linha == 3){
+}
+[e $U 9  ]
+[e :U 8 ]
+[e $ ! == _linha -> 3 `i 10  ]
+{
+"17
+[; ;stdio.c: 17:                  lcdCommand(0xD0);
+[e ( _lcdCommand (1 -> -> 208 `i `uc ]
+"18
+[; ;stdio.c: 18:                  linha++;
+[e ++ _linha -> 1 `i ]
+"19
+[; ;stdio.c: 19:              }else{
+}
+[e $U 11  ]
+[e :U 10 ]
+{
+"20
+[; ;stdio.c: 20:                  lcdCommand(0xD0);
+[e ( _lcdCommand (1 -> -> 208 `i `uc ]
+"21
+[; ;stdio.c: 21:                  linha++;
+[e ++ _linha -> 1 `i ]
+"22
+[; ;stdio.c: 22:              }
+}
+[e :U 11 ]
+[e :U 9 ]
+[e :U 7 ]
+"23
+[; ;stdio.c: 23:         }
+}
+[e :U 5 ]
+"24
+[; ;stdio.c: 24:         lcdData(msg[i]);
+[e ( _lcdData (1 -> *U + _msg * -> _i `x -> -> # *U _msg `i `x `uc ]
+"25
+[; ;stdio.c: 25:     }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 60 `i 2  ]
+[e :U 3 ]
+}
+"26
+[; ;stdio.c: 26: }
+[e :UE 1 ]
+}
