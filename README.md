@@ -1,8 +1,8 @@
 # Simulador de Estação de Abastecimento de Combustível
 
-h1 align=center
-	img src=https://i.ibb.co/FVVsy8D/abastece.png
-h1
+<h1 align="center">
+    <img src="https://i.ibb.co/FVVsy8D/abastece.png">
+</h1>
 
 ## Índice
 
@@ -33,9 +33,9 @@ O Projeto foi realizado utilizado as seguintes tecnologias
 
 O seguinte fluxograma mostra o funcionamento do algoritmo
 
-h1 align=center
-	img src=https://i.ibb.co/9rr1cYT/posto-fluxograma.png
-h1
+<h1 align="center">
+    <img src="https://i.ibb.co/9rr1cYT/posto-fluxograma.png">
+</h1>
 
 - [Vídeo do Funcionamento](https://youtu.be/zUdOVScl4oo)
 
